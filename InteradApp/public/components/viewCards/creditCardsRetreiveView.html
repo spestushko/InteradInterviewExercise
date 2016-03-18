@@ -1,0 +1,27 @@
+<md-content layout="column" layout-align="center center">
+    <h1>Retreive submitted cards</h1>
+    <!-- Repeater for posts -->
+    <div ng-repeat="card in cards">
+
+        <md-card style="width: 512px;" layout-align="">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Card: {{card.data.number}}</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content layout="column" layout-align="space-between">
+                <md-content class="bookPostDataFontGothic" layout="column" layout-align="start">
+                    Credit card info        <br/>
+                </md-content>
+                <div class="md-media-md card-media" layout="column" layout-align="center center">
+                    <!-- Picture goes here -->
+                    <!--<img style="height:350px;width:350px;" ng-src="../uploads/{{post.info.picture}}" alt="{{post.info.picture}}">
+                    -->
+                </div>
+            </md-card-content>
+        </md-card>
+
+    </div>
+
+</md-content>
