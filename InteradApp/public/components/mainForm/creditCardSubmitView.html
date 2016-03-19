@@ -9,45 +9,192 @@
             ISBN input field using angular material
             and angular validation with patterns
         -->
-        <md-input-container>
-            <label class="sellLabel">Credit card number</label>
-            <input name="isbn"
-                   ng-model="book.isbn"
-                   placeholder="Isbn"
-                   class="form-control"
-                   ng-minlength="10"
-                   ng-maxlength="50"
-                   ng-required="required"
-                   ng-pattern="/^\d+$/" />
-        </md-input-container>
-        <!--
-        ISBN input field error validation
-        -->
-        <div class="error"
-             ng-show="cardForm.isbn.$dirty && cardForm.isbn.$invalid">
-            <small class="error"
-                   ng-show="cardForm.isbn.$error.required">
-                ISBN is required.
-            </small>
-            <small class="error"
-                   ng-show="cardForm.isbn.$error.minlength">
-                ISBN is required to be at least 10 characters
-            </small>
-            <small class="error"
-                   ng-show="cardForm.isbn.$error.maxlength">
-                ISBN cannot be longer than 16 characters
-            </small>
-            <small class="error"
-                   ng-show="cardForm.isbn.$error.pattern">
-                ISBN consist of numbers only
-            </small>
-        </div>
-        <br />
 
-        <!-- Submit -->
-        <md-button type="button" ng-click="post()" value="POST"
-                   ng-disabled="sellForm.$invalid" class="md-raised md-primary">Sell</md-button>
-        <p ng-hide="authenticatedUser.authStatus">Log in or register first!</p>
+        <div layout-gt-xs="row" layout-xs="column">
+            <div flex>
+                <md-input-container>
+                    <label class="sellLabel">Your name (as it apperas on the credit card)</label>
+                    <input name="client"
+                           ng-model="data.name"
+                           placeholder="Name"
+                           class="form-control"
+                           ng-minlength="5"
+                           ng-maxlength="50"
+                           ng-pattern="/^[A-Za-z.,\ '-]*$/" />
+                </md-input-container>
+                <!--
+               Name input field error validation
+                -->
+                <div class="error"
+                     ng-show="cardForm.client.$dirty && cardForm.client.$invalid">
+                    <small class="error"
+                           ng-show="cardForm.client.$error.minlength">
+                        Name is required to be at least 5 numbers
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.client.$error.maxlength">
+                        Name cannot be longer than 50 characters
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.client.$error.pattern">
+                        Name must consist of Alphabetic characters and ,.'- characters
+                    </small>
+                </div>
+
+                <br/>
+                <!-- 4 sets of credit card numbers -->
+                <div>
+                    <!-- Credit card input data FIRST set -->
+                    <md-input-container>
+                        <label class="cardNumWidth" class="cardNumber">Card #</label>
+                    <input name="card1"
+                           size="4"
+                           maxlength="4"
+                           ng-model="data.card1"
+                           placeholder="XXXX"
+                           class="form-control"
+                           ng-length="4"
+                           ng-minlength="4"
+                           ng-maxlength="4"
+                           ng-pattern="/^\d+$/" />
+                </md-input-container>
+
+                    <!-- Credit card input data SECOND set -->
+                    <md-input-container>
+                        <input name="card2"
+                               ng-model="data.card2"
+                               size="4"
+                               maxlength="4"
+                               placeholder="XXXX"
+                               class="form-control"
+                               ng-minlength="4"
+                               ng-maxlength="4"
+                               ng-pattern="/^\d+$/" />
+                    </md-input-container>
+
+                    <!-- Credit card input data THIRD set -->
+                    <md-input-container>
+                        <input name="card3"
+                               ng-model="data.card3"
+                               size="4"
+                               maxlength="4"
+                               placeholder="XXXX"
+                               class="form-control"
+                               ng-minlength="4"
+                               ng-maxlength="4"
+                               ng-pattern="/^\d+$/" />
+                    </md-input-container>
+
+                    <!-- Credit card input data FOURTH set -->
+                    <md-input-container>
+                        <input name="card4"
+                               ng-model="data.card4"
+                               size="4"
+                               maxlength="4"
+                               placeholder="XXXX"
+                               class="form-control"
+                               ng-minlength="4"
+                               ng-maxlength="4"
+                               ng-pattern="/^\d+$/" />
+                    </md-input-container>
+                    <!--
+                    Validation of the fourth credit card part number
+                    -->
+                    <div class="error"
+                         ng-show="cardForm.card4.$dirty && cardForm.card4.$invalid ||
+                                  cardForm.card3.$dirty && cardForm.card3.$invalid ||
+                                  cardForm.card2.$dirty && cardForm.card2.$invalid ||
+                                  cardForm.card1.$dirty && cardForm.card1.$invalid">
+                        <small class="error"
+                               ng-show="cardForm.card1.$error.pattern ||
+                                        cardForm.card2.$error.pattern ||
+                                        cardForm.card3.$error.pattern ||
+                                        cardForm.card4.$error.pattern">
+                            Credit card numbers 0-9 are allowed
+                        </small>
+                    </div>
+                </div>
+
+                    </div>
+            <div flex>
+                <!-- **************************************
+                E-mail input field using angular material
+                and angular validation with patterns
+                -->
+                <md-input-container>
+                    <label class="sellLabel">E-mail</label>
+                    <input name="email"
+                           ng-model="data.email"
+                           placeholder="user@domain.resolution"
+                           class="form-control"
+                           ng-minlength="5"
+                           ng-maxlength="50"
+                           ng-trim="true"
+                           ng-pattern="/^[a-zA-Z]+[A-Za-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/" />
+                </md-input-container>
+                <!--
+                Email input field error validation
+                -->
+                <div class="error"
+                     ng-show="cardForm.email.$dirty && cardForm.email.$invalid">
+                    <small class="error"
+                           ng-show="cardForm.email.$error.minlength">
+                        Email must be 5 characters at least
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.email.$error.maxlength">
+                        Email must be 50 characters maximum
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.email.$error.pattern">
+                        Email format is incorrect
+                    </small>
+                </div>
+
+                <!-- **************************************
+                Phone number input field using angular material
+                and angular validation with patterns
+                -->
+                <md-input-container>
+                    <label class="sellLabel">Phone number</label>
+                    <input name="phone"
+                           ng-model="data.phone"
+                           placeholder="(647)-123-4567"
+                           class="form-control"
+                           ng-minlength="9"
+                           ng-maxlength="20"
+                           ng-required="required"
+                           ng-trim="true"
+                           ng-pattern="/^[a-zA-Z]+[A-Za-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/" />
+                </md-input-container>
+                <!--
+                Email input field error validation
+                -->
+                <div class="error"
+                     ng-show="cardForm.phone.$dirty && cardForm.phone.$invalid">
+                    <small class="error"
+                           ng-show="cardForm.phone.$error.required">
+                        Phone number is required
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.phone.$error.minlength">
+                        Phone number must be 9 characters at least
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.phone.$error.maxlength">
+                        Phone number must be 20 characters maximum
+                    </small>
+                    <small class="error"
+                           ng-show="cardForm.phone.$error.pattern">
+                        Phone number format is incorrect
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div flex="66" flex-offset="25">
+            <md-button type="button" ng-click="post()" value="POST"
+                       ng-disabled="sellForm.$invalid" class="md-raised md-primary">Submit application</md-button>
+        </div>
 
     </form>
 </md-content>
