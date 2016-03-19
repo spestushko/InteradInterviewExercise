@@ -11,3 +11,11 @@ a {
   display: block;
   width: 100%;
 }
+
+.error{
+  color: darkred;
+}
+
+.textAreaSize{
+  width: 500px;
+}
