@@ -1,26 +1,52 @@
-<md-content layout-gt-sm="" layout-padding="" layout-align="center center">
+<div layout="row" layout-align="center center">
 
     <form name="cardForm" enctype="multipart/form-data" novalidate>
-        <div layout-gt-xs="row" layout-xs="column">
-        <!-- ***
-        Interad logo upper panel
-        *** -->
+            <!-- ***
+            Interad logo upper panel
+            *** -->
+<!-- https://css-tricks.com/boxes-fill-height-dont-squish/ -->
 
+        <div layout="row" layout-sm="column">
+            <div flex="100" class="testBgLightGrey" style="min-height: 50px;">
+                <img ng-src="../resources/interad_logo.png" alt="Logo" class="logoSize">
+            </div>
+        </div>
+
+        <div layout="row" flex="auto" layout-sm="column">
+            <div flex="33" class="testBgDarkGrey"></div>
+            <div flex="33" layout-align="center center" class="testBgDarkGrey" style="min-height: 250px; max-width: 400px">
+                <img ng-src="../resources/Sample_CreditCard.png" alt="Logo" class="cardSize">
+            </div>
+            <div flex="33" class="testBgDarkGrey"></div>
+
+
+        </div>
 
         <!-- ***
         Interad card panel
         *** -->
-
+<!--
+        <div flex="66" flex-offset="25">
+            <md-content>
+                <image ng-src="../resources/Sample_CreditCard.png" class="cardSize">
+            </md-content>
+        </div>
+-->
         <!-- ***
         Message panel
         *** -->
-
+        <md-content>
+            <p>
+            Simply complete the form below to enter CashBack contest
+            for a chance to win** 1 of 10 trips worth $10.000
+            </p>
+        </md-content>
         <!-- **************************************
             Client's Name input field using angular material
             and angular validation with patterns
         -->
-
-            <div flex>
+        <div layout-gt-xs="row" layout-xs="column" flex-offset="5">
+            <div flex >
                 <md-input-container>
                     <label class="sellLabel">Your name (as it apperas on the credit card)</label>
                     <input name="client"
@@ -201,17 +227,14 @@
             </div>
         </div>
 
-        <md-input-container flex="auto">
+        <md-input-container flex="auto" flex-offset="5">
             <textarea cols="68" placeholder="Why do you deserve the money?"></textarea>
         </md-input-container>
 
         <div flex="66" flex-offset="25">
-
-
-
             <md-button type="button" ng-click="post()" value="POST"
                        ng-disabled="sellForm.$invalid" class="md-raised md-primary">Submit application</md-button>
         </div>
 
     </form>
-</md-content>
+</div>

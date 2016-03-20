@@ -19,3 +19,34 @@ a {
 .textAreaSize{
   width: 500px;
 }
+
+.logoSize{
+  width: 20%;
+  height: 20%;
+}
+
+.cardSize{
+  width: 150%;
+  height: 150%;
+}
+
+.testBGRed{
+  min-height: 100%;
+  background-color: darkred;
+}
+
+.testBGGreen{
+  background-color: green;
+}
+
+.testBGBlue{
+  background-color: blue;
+}
+
+.testBgLightGrey{
+  background-color: lightgrey;
+}
+
+.testBgDarkGrey{
+  background-color: darkgrey;
+}
