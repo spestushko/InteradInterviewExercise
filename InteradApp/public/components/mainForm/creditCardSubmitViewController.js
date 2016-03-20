@@ -17,6 +17,10 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
   // error message holder for submiting data
   $scope.errorMessage = '';
 
+  $scope.registeredAccepted  = false;
+  $scope.registeredAcceptedF = false;
+  $scope.licenceAccepted     = false;
+
   /**************************************
    *
    * Scope functions

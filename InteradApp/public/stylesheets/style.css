@@ -26,8 +26,8 @@ a {
 }
 
 .cardSize{
-  width: 150%;
-  height: 150%;
+  width: 100%;
+  height: 100%;
 }
 
 .testBGRed{
@@ -50,3 +50,22 @@ a {
 .testBgDarkGrey{
   background-color: darkgrey;
 }
+
+span.belowCardPanelTextBold{
+  font-weight: bold;
+}
+
+.belowCardPanelTextOblique{
+  font-style: oblique;
+}
+
+span.belowCardPanelTextBig{
+  font-size: 150%;
+}
+
+span.upperFormPanel{
+  font-size: 120%;
+  font-style: oblique;
+}
+
+

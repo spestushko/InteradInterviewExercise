@@ -1,45 +1,44 @@
 <div layout="row" layout-align="center center">
 
     <form name="cardForm" enctype="multipart/form-data" novalidate>
-            <!-- ***
-            Interad logo upper panel
-            *** -->
-<!-- https://css-tricks.com/boxes-fill-height-dont-squish/ -->
 
+<!-- https://css-tricks.com/boxes-fill-height-dont-squish/ -->
+        <!-- Interad upper logo panel -->
         <div layout="row" layout-sm="column">
             <div flex="100" class="testBgLightGrey" style="min-height: 50px;">
                 <img ng-src="../resources/interad_logo.png" alt="Logo" class="logoSize">
             </div>
         </div>
-
-        <div layout="row" flex="auto" layout-sm="column">
+        <!-- Interad card panel -->
+        <div layout="row" flex="auto">
             <div flex="33" class="testBgDarkGrey"></div>
-            <div flex="33" layout-align="center center" class="testBgDarkGrey" style="min-height: 250px; max-width: 400px">
+            <div flex="33" layout-align="center center" class="testBgDarkGrey" style="min-height: 150px; max-width: 400px">
                 <img ng-src="../resources/Sample_CreditCard.png" alt="Logo" class="cardSize">
             </div>
             <div flex="33" class="testBgDarkGrey"></div>
-
-
         </div>
-
-        <!-- ***
-        Interad card panel
-        *** -->
-<!--
-        <div flex="66" flex-offset="25">
-            <md-content>
-                <image ng-src="../resources/Sample_CreditCard.png" class="cardSize">
-            </md-content>
+        <!-- Text panel ( What interad..) -->
+        <div layout="row" flex="auto">
+            <div flex="33" class="testBgDarkGrey"></div>
+            <div flex="50" class="testBgDarkGrey">
+                <span class="belowCardPanelTextOblique belowCardPanelTextBig">What can the
+                    <span class="belowCardPanelTextBold">Interad card</span> do for you</span>
+            </div>
+            <div flex="33" class="testBgDarkGrey"></div>
         </div>
--->
-        <!-- ***
-        Message panel
-        *** -->
-        <md-content>
-            <p>
-            Simply complete the form below to enter CashBack contest
-            for a chance to win** 1 of 10 trips worth $10.000
-            </p>
+        <!-- Message before form inputs
+        <div layout="row" flex="auto">
+            <div flex="50" class="testBgLightGrey" style="min-height: 30px;">
+                <span class="upperFormPanel">
+                    Simply complete the form below to enter CashBack contest
+                    for a chance to win** 1 of 10 trips worth $10.000
+                </span>
+            </div>
+        </div>
+         -->
+        <md-content class="testBgLightGrey belowCardPanelTextOblique">
+                    Simply complete the form below to enter CashBack contest
+                    for a chance to win** 1 of 10 trips worth $10.000
         </md-content>
         <!-- **************************************
             Client's Name input field using angular material
@@ -48,7 +47,7 @@
         <div layout-gt-xs="row" layout-xs="column" flex-offset="5">
             <div flex >
                 <md-input-container>
-                    <label class="sellLabel">Your name (as it apperas on the credit card)</label>
+                    <label class="sellLabel">Your name</label>
                     <input name="client"
                            ng-model="data.name"
                            placeholder="Name"
@@ -231,10 +230,73 @@
             <textarea cols="68" placeholder="Why do you deserve the money?"></textarea>
         </md-input-container>
 
-        <div flex="66" flex-offset="25">
+        <div flex="auto">
+            <md-checkbox ng-model="registeredAccepted" aria-label="Checkbox-1">
+                I am registering an Interad business card
+            </md-checkbox>
+        </div>
+
+        <div flex="auto" ng-show="registeredAccepted">
+            <div flex="auto">
+            <md-input-container>
+                <label class="sellLabel">Business name</label>
+                <input name="businessName"
+                       ng-model="data.businessName"
+                       placeholder="Name..."
+                       class="form-control"
+                       ng-minlength="5"
+                       ng-maxlength="50"
+                       ng-pattern="/^[A-Za-z.,\ '-]*$/" />
+            </md-input-container>
+            <!--
+           Name input field error validation
+            -->
+            <div class="error"
+                 ng-show="cardForm.businessName.$dirty && cardForm.businessName.$invalid">
+                <small class="error"
+                       ng-show="cardForm.businessName.$error.minlength">
+                    Name is required to be at least 5 numbers
+                </small>
+                <small class="error"
+                       ng-show="cardForm.businessName.$error.maxlength">
+                    Name cannot be longer than 50 characters
+                </small>
+                <small class="error"
+                       ng-show="cardForm.businessName.$error.pattern">
+                    Name must consist of Alphabetic characters and ,.'- characters
+                </small>
+            </div>
+            </div>
+
+            <div flex="auto">
+            <md-checkbox ng-model="registeredAcceptedF" aria-label="Checkbox-1">
+                I certify that I am the owner of the business       <br/>
+                under which Interad Platinum card that I've entered <br/>
+                (into contest) has been issued.                     <br/>
+            </md-checkbox>
+                <br/>
+                Note: If an Interad Platinum card is selected as a   <br/>
+                potential winner, the business owner must provide    <br/>
+                identification satisfactory to the Sponsor confirming<br/>
+                the business ownership. The prize will be awareded in<br/>
+                the name of the business and the business onwer(s)   <br/>
+                will determine who will participate in the prize.    <br/>
+                <br/>
+            </div>
+        </div>
+
+        <div flex="auto">
+            <md-checkbox ng-model="licenceAccepted" aria-label="Checkbox-1">
+                I have read and agreed to the <br/>
+                <span style="color: blue; text-decoration: underline">Official Contest Rules and Regulations
+            </md-checkbox>
+        </div>
+
+        <div flex="66" flex-offset="35">
             <md-button type="button" ng-click="post()" value="POST"
                        ng-disabled="sellForm.$invalid" class="md-raised md-primary">Submit application</md-button>
         </div>
+
 
     </form>
 </div>
