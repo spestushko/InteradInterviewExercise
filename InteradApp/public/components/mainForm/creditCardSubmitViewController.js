@@ -11,7 +11,11 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
 
   // Creating book object
   $scope.card = {
+    name:'',
     number:'',
+    email:'',
+    phoneNumber:'',
+    businessName:'',
   };
 
   // error message holder for submiting data
@@ -29,10 +33,12 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
 
   // Submiting post to the back-end for further validation
   // and savin it to mongoDB
-  $scope.post = function ()
-  {
+  $scope.post = function () {
     // Sending post request to the server side, to store it in the DB
-    $http.post('/cards/add', { isbn: $scope.card.number,
+    $http.post('/cards/add', { name: $scope.data.name,
+                               cardNumber: $scope.data.card1 + $scope.data.card2 +
+                                           $scope.data.card3 + $scope.data.card4,
+
         }).success(function (data) {
           if (data.state == 'success') {
             $scope.errorMessage = 'Form has been submitted succesfuly';

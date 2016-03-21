@@ -1,10 +1,10 @@
 <div layout="row" layout-align="center center">
 
-    <form name="cardForm" enctype="multipart/form-data" novalidate>
+    <form role="form" name="cardForm" enctype="multipart/form-data">
 
 <!-- https://css-tricks.com/boxes-fill-height-dont-squish/ -->
         <!-- Interad upper logo panel -->
-        <div layout="row" layout-sm="column">
+        <div layout="row" layout-sm="column" novalidate="">
             <div flex="100" class="testBgLightGrey" style="min-height: 50px;">
                 <img ng-src="../resources/interad_logo.png" alt="Logo" class="logoSize">
             </div>
@@ -44,7 +44,7 @@
             Client's Name input field using angular material
             and angular validation with patterns
         -->
-        <div layout-gt-xs="row" layout-xs="column" flex-offset="5">
+        <div layout-gt-xs="row" layout-xs="column" class="mainFormBg" layout-padding>
             <div flex >
                 <md-input-container>
                     <label class="sellLabel">Your name</label>
@@ -61,6 +61,7 @@
                 -->
                 <div class="error"
                      ng-show="cardForm.client.$dirty && cardForm.client.$invalid">
+                    <img ng-src="../resources/error_icn.png">
                     <small class="error"
                            ng-show="cardForm.client.$error.minlength">
                         Name is required to be at least 5 numbers
@@ -139,6 +140,7 @@
                                   cardForm.card3.$dirty && cardForm.card3.$invalid ||
                                   cardForm.card2.$dirty && cardForm.card2.$invalid ||
                                   cardForm.card1.$dirty && cardForm.card1.$invalid">
+                        <img ng-src="../resources/error_icn.png">
                         <small class="error"
                                ng-show="cardForm.card1.$error.pattern ||
                                         cardForm.card2.$error.pattern ||
@@ -171,6 +173,7 @@
                 -->
                 <div class="error"
                      ng-show="cardForm.email.$dirty && cardForm.email.$invalid">
+                    <img ng-src="../resources/error_icn.png">
                     <small class="error"
                            ng-show="cardForm.email.$error.minlength">
                         Email must be 5 characters at least
@@ -190,22 +193,23 @@
                 and angular validation with patterns
                 -->
                 <md-input-container>
-                    <label class="sellLabel">Phone number</label>
+                    <label class="sellLabel"><span style="color:red">*</span> Phone number</label>
                     <input name="phone"
                            ng-model="data.phone"
-                           placeholder="(647)-123-4567"
+                           placeholder="6471234567"
                            class="form-control"
                            ng-minlength="9"
                            ng-maxlength="20"
-                           ng-required="required"
+                           required
                            ng-trim="true"
-                           ng-pattern="/^[a-zA-Z]+[A-Za-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/" />
+                           ng-pattern="/^[0-9]*$/" />
                 </md-input-container>
                 <!--
                 Email input field error validation
                 -->
                 <div class="error"
                      ng-show="cardForm.phone.$dirty && cardForm.phone.$invalid">
+                    <img ng-src="../resources/error_icn.png">
                     <small class="error"
                            ng-show="cardForm.phone.$error.required">
                         Phone number is required
@@ -225,8 +229,8 @@
                 </div>
             </div>
         </div>
-
-        <md-input-container flex="auto" flex-offset="5">
+    <div class="mainFormBg">
+        <md-input-container flex="auto" layout-margin>
             <textarea cols="68" placeholder="Why do you deserve the money?"></textarea>
         </md-input-container>
 
@@ -236,7 +240,7 @@
             </md-checkbox>
         </div>
 
-        <div flex="auto" ng-show="registeredAccepted">
+        <div flex="auto" ng-show="registeredAccepted" layout-padding>
             <div flex="auto">
             <md-input-container>
                 <label class="sellLabel">Business name</label>
@@ -253,6 +257,7 @@
             -->
             <div class="error"
                  ng-show="cardForm.businessName.$dirty && cardForm.businessName.$invalid">
+                <img ng-src="../resources/error_icn.png">
                 <small class="error"
                        ng-show="cardForm.businessName.$error.minlength">
                     Name is required to be at least 5 numbers
@@ -275,26 +280,29 @@
                 (into contest) has been issued.                     <br/>
             </md-checkbox>
                 <br/>
+                <span class="noteColor">
                 Note: If an Interad Platinum card is selected as a   <br/>
                 potential winner, the business owner must provide    <br/>
                 identification satisfactory to the Sponsor confirming<br/>
                 the business ownership. The prize will be awareded in<br/>
                 the name of the business and the business onwer(s)   <br/>
                 will determine who will participate in the prize.    <br/>
+                </span>
                 <br/>
             </div>
         </div>
 
         <div flex="auto">
-            <md-checkbox ng-model="licenceAccepted" aria-label="Checkbox-1">
+            <md-checkbox ng-model="licenceAccepted" required aria-label="Checkbox-1">
                 I have read and agreed to the <br/>
                 <span style="color: blue; text-decoration: underline">Official Contest Rules and Regulations
             </md-checkbox>
         </div>
+    </div>
 
-        <div flex="66" flex-offset="35">
-            <md-button type="button" ng-click="post()" value="POST"
-                       ng-disabled="sellForm.$invalid" class="md-raised md-primary">Submit application</md-button>
+        <div flex="66" flex-offset="30">
+            <md-button layout-padding ng-disabled="cardForm.$invalid" type="button" ng-click="post()" value="POST"
+                       class="md-raised md-primary">Submit application</md-button>
         </div>
 
 

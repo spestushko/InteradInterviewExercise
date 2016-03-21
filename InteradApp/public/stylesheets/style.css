@@ -57,15 +57,26 @@ span.belowCardPanelTextBold{
 
 .belowCardPanelTextOblique{
   font-style: oblique;
+  font-family: "Rockwell";
 }
 
 span.belowCardPanelTextBig{
   font-size: 150%;
+  font-family: "Goudy Old Style";
 }
 
 span.upperFormPanel{
   font-size: 120%;
   font-style: oblique;
+  font-family: "Rockwell";
+}
+
+.mainFormBg{
+  background-color: whitesmoke;
+}
+
+.noteColor{
+  color:lightgrey;
 }
 
 
