@@ -163,7 +163,7 @@
                            ng-model="data.email"
                            placeholder="user@domain.resolution"
                            class="form-control"
-                           ng-minlength="5"
+                           ng-minlength="2"
                            ng-maxlength="50"
                            ng-trim="true"
                            ng-pattern="/^[a-zA-Z]+[A-Za-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/" />
@@ -231,7 +231,7 @@
         </div>
     <div class="mainFormBg">
         <md-input-container flex="auto" layout-margin>
-            <textarea cols="68" placeholder="Why do you deserve the money?"></textarea>
+            <textarea ng-model="data.details" cols="68" placeholder="Why do you deserve the money?"></textarea>
         </md-input-container>
 
         <div flex="auto">
@@ -246,9 +246,9 @@
                 <label class="sellLabel">Business name</label>
                 <input name="businessName"
                        ng-model="data.businessName"
-                       placeholder="Name..."
+                       placeholder="Business name..."
                        class="form-control"
-                       ng-minlength="5"
+                       ng-minlength="2"
                        ng-maxlength="50"
                        ng-pattern="/^[A-Za-z.,\ '-]*$/" />
             </md-input-container>

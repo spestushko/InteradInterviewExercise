@@ -5,7 +5,7 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
   // Restore data from session
   /**************************************
    *
-   * Scope variables and data arrays
+   * Scope variables and data objects
    *
    * ************************************/
 
@@ -38,7 +38,10 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
     $http.post('/cards/add', { name: $scope.data.name,
                                cardNumber: $scope.data.card1 + $scope.data.card2 +
                                            $scope.data.card3 + $scope.data.card4,
-
+                               email:$scope.data.email,
+                               phone:$scope.data.phone,
+                               details:$scope.data.details,
+                               businessName:$scope.data.businessName,
         }).success(function (data) {
           if (data.state == 'success') {
             $scope.errorMessage = 'Form has been submitted succesfuly';
