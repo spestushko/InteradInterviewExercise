@@ -1,27 +1,30 @@
-<md-content layout="column" layout-align="center center">
+<md-content layout="column" layout-margin layout-wrap layout-align="center center">
     <h1>Retreive submitted cards</h1>
     <!-- Repeater for posts -->
     <div ng-repeat="card in cards">
 
-        <md-card style="width: 512px;" layout-align="">
+        <md-card style="width: 512px;" layout-align="" flex="100">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Card: {{card.data.number}}</span>
+                    <span class="md-headline">Card #{{$index + 1}}</span>
                 </md-card-title-text>
             </md-card-title>
 
             <md-card-content layout="column" layout-align="space-between">
-                <md-content class="bookPostDataFontGothic" layout="column" layout-align="start">
-                    Credit card info        <br/>
-                </md-content>
                 <div class="md-media-md card-media" layout="column" layout-align="center center">
                     <!-- Picture goes here -->
-                    <!--<img style="height:350px;width:350px;" ng-src="../uploads/{{post.info.picture}}" alt="{{post.info.picture}}">
-                    -->
+                    <img style="height:350%;width:350%;" ng-src="../resources/Sample_CreditCard.png"
+                         alt="Sample card picture">
                 </div>
+                <md-content class="bookPostDataFontGothic" layout="column" layout-align="start">
+                    Credit card# : {{card.cardNum}}     <br/>
+                    Client name  : {{card.clientName}}  <br/>
+                    Email        : {{card.email}}       <br/>
+                    Phone        : {{card.phone}}       <br/>
+                    Business name: {{card.businessName}}<br/>
+                    Reasoning    : {{card.reason}}      <br/>
+                </md-content>
             </md-card-content>
         </md-card>
-
     </div>
-
 </md-content>

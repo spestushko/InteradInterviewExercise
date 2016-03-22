@@ -21,6 +21,7 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
   // error message holder for submiting data
   $scope.errorMessage = '';
 
+  // boolean values for checkboxes
   $scope.registeredAccepted  = false;
   $scope.registeredAcceptedF = false;
   $scope.licenceAccepted     = false;
@@ -35,16 +36,16 @@ app.controller('creditCardSubmitViewController', function ($timeout, $scope, $ht
   // and savin it to mongoDB
   $scope.post = function () {
     // Sending post request to the server side, to store it in the DB
-    $http.post('/cards/add', { name: $scope.data.name,
+    $http.post('/cards/newCard', { name: $scope.data.name,
                                cardNumber: $scope.data.card1 + $scope.data.card2 +
                                            $scope.data.card3 + $scope.data.card4,
                                email:$scope.data.email,
                                phone:$scope.data.phone,
-                               details:$scope.data.details,
+                               reason:$scope.data.reason,
                                businessName:$scope.data.businessName,
         }).success(function (data) {
           if (data.state == 'success') {
-            $scope.errorMessage = 'Form has been submitted succesfuly';
+            $location.path('/');
           } else {
             $scope.errorMessage = data.message;
           }
