@@ -5,12 +5,17 @@ var Card = mongoose.model('Card');
 
 /* GET cards listing. */
 router.get('/getCards', function (req, res) {
+  // Getting all the cards objects from the database
   Card.find(function (err, cards) {
     if (err) {
       console.log('SEND_CARDS_ERR:{ ' + err + '}');
+
+      // In case of an error, send 500 error state
       return res.send(500, err);
     } else {
       console.log('SEND_CARDS_GOOD:');
+
+      // and send them if no error occured.
       return res.send(200, cards);
     }
   });
@@ -39,4 +44,5 @@ router.post('/newCard', function (req, res) {
   res.send({ state:'success' });
 });
 
+// Exporting router
 module.exports = router;
